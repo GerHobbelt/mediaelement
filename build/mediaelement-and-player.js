@@ -2441,6 +2441,9 @@ if (typeof jQuery != 'undefined') {
 							var p = mejs.players[i];
 							if (p.id != t.id && t.options.pauseOtherPlayers && !p.paused && !p.ended) {
 								p.pause();
+								try{
+									p.setCurrentTime(0);
+								} catch (exp) { if (console && console.log) console.log(exp); }
 							}
 							p.hasFocus = false;
 						}
@@ -2715,8 +2718,9 @@ if (typeof jQuery != 'undefined') {
 				.click(function() {
                     if (t.options.clickToPlayPause) {
 						if (t.options.resetOnPlayOrPause) {
-							media.setCurrentTime(0);
-							console.log('resetOnPlayOrPause');
+							try{
+								media.setCurrentTime(0);
+							} catch (exp) { if (console && console.log) console.log(exp); }
 						}
                         if (media.paused) {
                             media.play();
