@@ -891,9 +891,6 @@
 				.appendTo(layers)
 				.click(function() {
                     if (t.options.clickToPlayPause) {
-						if (t.options.resetOnPlay) {
-							media.setCurrentTime(0);
-						}
                         if (media.paused) {
                             media.play();
                         } else {
