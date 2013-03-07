@@ -618,6 +618,7 @@
 							var p = mejs.players[i];
 							if (p.id != t.id && t.options.pauseOtherPlayers && !p.paused && !p.ended) {
 								p.pause();
+								p.setCurrentTime(0);
 							}
 							p.hasFocus = false;
 						}
