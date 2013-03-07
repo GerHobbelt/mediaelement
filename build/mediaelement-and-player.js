@@ -2441,7 +2441,6 @@ if (typeof jQuery != 'undefined') {
 							var p = mejs.players[i];
 							if (p.id != t.id && t.options.pauseOtherPlayers && !p.paused && !p.ended) {
 								p.pause();
-								p.setCurrentTime(0);
 							}
 							p.hasFocus = false;
 						}
@@ -2715,6 +2714,10 @@ if (typeof jQuery != 'undefined') {
 				.appendTo(layers)
 				.click(function() {
                     if (t.options.clickToPlayPause) {
+						if (t.options.resetOnPlayOrPause) {
+							media.setCurrentTime(0);
+							console.log('resetOnPlayOrPause');
+						}
                         if (media.paused) {
                             media.play();
                         } else {
